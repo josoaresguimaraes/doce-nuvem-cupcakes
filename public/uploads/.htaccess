@@ -1,0 +1,5 @@
+# Impede a execução de scripts enviados por upload
+<FilesMatch "\.(php|phtml|phar|pl|py|cgi|sh)$">
+    Require all denied
+</FilesMatch>
+Options -ExecCGI

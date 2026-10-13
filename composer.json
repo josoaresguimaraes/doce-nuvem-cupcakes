@@ -1,0 +1,28 @@
+{
+    "name": "jonathan/doce-nuvem-cupcakes",
+    "description": "Aplicação web de pedidos de cupcakes (PHP + MySQL, MVC) — Projeto Integrador Transdisciplinar em Engenharia de Software II",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.1",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*",
+        "ext-fileinfo": "*",
+        "ext-mbstring": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6 || ^10.5"
+    },
+    "autoload": {
+        "psr-4": { "App\\": "app/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Tests\\": "tests/" }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:unit": "phpunit --testsuite Unit",
+        "serve": "php -S 127.0.0.1:8000 -t public server.php"
+    },
+    "config": { "sort-packages": true }
+}

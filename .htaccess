@@ -1,0 +1,11 @@
+# Usado quando o projeto inteiro é enviado para a raiz do site (ex.: htdocs no InfinityFree).
+# Encaminha tudo para a pasta public/ e bloqueia o acesso direto ao restante.
+Options -Indexes
+RewriteEngine On
+
+RewriteRule ^(app|config|database|storage|tests|docs|vendor)(/|$) - [F,L]
+RewriteRule ^\.env - [F,L]
+RewriteRule ^(composer\.(json|lock)|phpunit\.xml)$ - [F,L]
+
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]

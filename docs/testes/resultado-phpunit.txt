@@ -1,0 +1,88 @@
+PHPUnit 9.6.17 by Sebastian Bergmann and contributors.
+
+Cart (Tests\Unit\Cart)
+ ✔ Mesma personalizacao soma quantidade
+ ✔ Personalizacao diferente vira outra linha
+ ✔ Atualizar e remover
+ ✔ Limite de quantidade por linha
+ ✔ Carrinho fica guardado no armazenamento
+
+Delivery Scheduler (Tests\Unit\DeliveryScheduler)
+ ✔ Dia seguinte tem todos os horarios do expediente
+ ✔ Mesmo dia respeita antecedencia
+ ✔ Datas fora do intervalo nao tem horario
+ ✔ Depois do expediente nao ha horario hoje
+ ✔ Validacao
+ ✔ Urgencia
+
+Payment Simulator (Tests\Unit\PaymentSimulator)
+ ✔ Algoritmo de luhn
+ ✔ Cartao aprovado guarda somente final
+ ✔ Cartao recusado pela operadora
+ ✔ Cartao com dados invalidos
+ ✔ Cartao valido ate o fim do mes de validade
+ ✔ Pix gera codigo com validade de dez minutos
+ ✔ Boleto vence em dois dias uteis
+ ✔ Metodo inexistente
+
+Pricing Service (Tests\Unit\PricingService)
+ ✔ Soma itens e entrega
+ ✔ Taxa de pedido minimo
+ ✔ Taxa de urgencia
+ ✔ Sem endereco nao cobra entrega
+ ✔ Carrinho vazio nao cobra taxa minima
+ ✔ Preco unitario com cobertura
+
+Validator (Tests\Unit\Validator)
+ ✔ Email valido e invalido
+ ✔ Regra de senha
+ ✔ Cep
+ ✔ Mensagem do cupcake
+ ✔ Conversao de valores
+ ✔ Endereco valido e normalizado
+ ✔ Endereco com erros
+
+Checkout Service (Tests\Integration\CheckoutService)
+ ✔ Pedido com cartao grava itens baixa estoque e limpa carrinho
+ ✔ Pedido pequeno no mesmo dia cobra taxas
+ ✔ Estoque insuficiente nao cria pedido
+ ✔ Cep fora da area de entrega
+ ✔ Nao usa endereco de outro cliente
+ ✔ Cartao recusado nao cria pedido nem baixa estoque
+ ✔ Horario fora do expediente e recusado
+ ✔ Carrinho vazio
+ ✔ Produto desativado sai do carrinho
+
+Http (Tests\Integration\Http)
+ ✔ Paginas publicas e rota inexistente
+ ✔ Api da vitrine responde json
+ ✔ Areas restritas exigem login
+ ✔ Post sem token csrf e recusado
+ ✔ Cliente nao acessa area do gerente
+ ✔ Login invalido mostra mensagem generica
+ ✔ Gerente exporta relatorio csv
+ ✔ Cadastro escapa html
+
+Order (Tests\Integration\Order)
+ ✔ Fluxo completo de status gera linha do tempo
+ ✔ Nao permite transicao invalida
+ ✔ Nao avanca sem pagamento confirmado
+ ✔ Cancelamento devolve estoque
+ ✔ Relatorio considera apenas pedidos validos
+ ✔ Cliente so ve os proprios
+
+Product (Tests\Integration\Product)
+ ✔ Vitrine paginada com indisponiveis no fim
+ ✔ Filtro combinado
+ ✔ Criar editar produto com categorias
+ ✔ Remover produto usado em pedido apenas desativa
+
+User And Address (Tests\Integration\UserAndAddress)
+ ✔ Senha guardada como hash
+ ✔ Email unico
+ ✔ Endereco pertence ao dono
+ ✔ Formato do endereco
+
+Time: 00:02.369, Memory: 8.00 MB
+
+OK (63 tests, 206 assertions)

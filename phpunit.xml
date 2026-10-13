@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Testes automatizados: vendor/bin/phpunit (ou "phpunit" instalado no sistema) -->
+<phpunit bootstrap="tests/bootstrap.php"
+         colors="true"
+         failOnRisky="true"
+         failOnWarning="true">
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Integration">
+            <directory>tests/Integration</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <!-- Banco exclusivo para testes: é apagado e recriado a cada teste de integração -->
+        <env name="DB_HOST" value="127.0.0.1"/>
+        <env name="DB_PORT" value="3306"/>
+        <env name="DB_NAME" value="cupcakes_test"/>
+        <env name="DB_USER" value="cupcakes"/>
+        <env name="DB_PASS" value="cupcakes"/>
+        <env name="APP_TIMEZONE" value="America/Sao_Paulo"/>
+    </php>
+</phpunit>
