@@ -45,8 +45,10 @@ Classifique a gravidade como **Alta** (impede a compra ou causa erro), **Média*
 
 Coloque aqui os prints numerados (antes e depois de cada correção). Exemplo:
 
-- **D01, antes:** ![](evidencias/d01-antes.png)
-- **D01, depois:** ![](evidencias/d01-depois.png)
+- **D01, antes:** `![](evidencias/d01-antes.png)`
+- **D01, depois:** `![](evidencias/d01-depois.png)`
+
+(Crie a pasta `docs/situacao-3/evidencias/`, coloque os prints e remova as crases para exibir as imagens.)
 
 ## 6. Conclusão
 
