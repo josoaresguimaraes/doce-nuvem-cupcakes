@@ -6,7 +6,7 @@ Envie a cada testador o **link do site**, as **contas de teste** e este roteiro.
 
 > Oi! Estou finalizando meu Projeto Integrador e preciso que você teste o sistema que desenvolvi, uma loja online de cupcakes. Leva uns 15 minutos.
 >
-> **Site:** [LINK DA SOLUÇÃO]
+> **Site:** [(https://docenuvem-cupcakes.ifree.page/)]
 > **Cliente de teste:** cliente@exemplo.com.br / Cliente123 (ou crie sua própria conta)
 > **Gerente de teste:** gerente@docenuvem.com.br / Gerente@123
 > **Cartão de teste:** 4111 1111 1111 1111, validade 12/30, CVV 123 (o pagamento é simulado, nada é cobrado)
