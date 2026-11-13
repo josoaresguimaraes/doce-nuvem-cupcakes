@@ -58,7 +58,7 @@ final class CartController extends Controller
             }
         }
         if (!Validator::cupcakeMessage($message)) {
-            $errors['mensagem'] = 'A mensagem aceita até 50 letras, números e espaços (sem símbolos).';
+            $errors['mensagem'] = 'A mensagem aceita até 50 caracteres: ' . Validator::MESSAGE_RULE_TEXT . '.';
         }
         if ($errors !== []) {
             $this->backWithErrors($back, $errors);

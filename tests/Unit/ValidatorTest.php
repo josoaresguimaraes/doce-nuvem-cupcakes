@@ -36,15 +36,21 @@ final class ValidatorTest extends TestCase
         self::assertSame('18035000', Validator::digits('18035-000'));
     }
 
-    /** US03 RN#1: mensagem com até 50 caracteres alfanuméricos. */
+    /** US03 RN#1 (revisada — defeito D01 do laudo): até 50 caracteres, com pontuação comum. */
     public function testMensagemDoCupcake(): void
     {
         self::assertTrue(Validator::cupcakeMessage(''), 'mensagem é opcional');
         self::assertTrue(Validator::cupcakeMessage('Feliz aniversário Ana 30'));
         self::assertTrue(Validator::cupcakeMessage(str_repeat('a', 50)));
         self::assertFalse(Validator::cupcakeMessage(str_repeat('a', 51)), 'mais de 50 caracteres');
-        self::assertFalse(Validator::cupcakeMessage('Parabéns!'), 'símbolo não permitido');
+        self::assertTrue(Validator::cupcakeMessage('Parabéns!'), 'D01: ponto de exclamação é aceito');
+        self::assertTrue(Validator::cupcakeMessage('Feliz aniversário, Ana! (30 anos)'), 'vírgula e parênteses');
+        self::assertTrue(Validator::cupcakeMessage("Ana & Léo: felicidades? Sim!"), 'demais pontuações comuns');
+        self::assertTrue(Validator::cupcakeMessage("D'Ávila - 10 anos."), 'apóstrofo, hífen e ponto');
         self::assertFalse(Validator::cupcakeMessage('<script>'), 'tentativa de HTML');
+        self::assertFalse(Validator::cupcakeMessage('Diga "oi"'), 'aspas duplas continuam bloqueadas');
+        self::assertFalse(Validator::cupcakeMessage('a/b\\c'), 'barras continuam bloqueadas');
+        self::assertFalse(Validator::cupcakeMessage('Parabéns 🎉'), 'emoji não é impresso no topper');
     }
 
     public function testConversaoDeValores(): void

@@ -39,8 +39,8 @@
                 <div class="field">
                     <label for="mensagem">Mensagem no topper <span class="muted">(opcional)</span></label>
                     <input type="text" id="mensagem" name="mensagem" maxlength="50" value="<?= old($old, 'mensagem') ?>"
-                           pattern="[A-Za-zÀ-ÿ0-9 ]*" aria-describedby="mensagem-ajuda" placeholder="Ex.: Feliz aniversário Ana">
-                    <p id="mensagem-ajuda" class="hint"><span id="mensagem-contador">0</span>/50 · apenas letras, números e espaços</p>
+                           pattern="[A-Za-zÀ-ÿ0-9 .,!?'\-:\(\)&amp;]*" title="Use <?= e(App\Services\Validator::MESSAGE_RULE_TEXT) ?>" aria-describedby="mensagem-ajuda" placeholder="Ex.: Feliz aniversário, Ana!">
+                    <p id="mensagem-ajuda" class="hint"><span id="mensagem-contador">0</span>/50 · <?= e(App\Services\Validator::MESSAGE_RULE_TEXT) ?></p>
                     <?= field_error($errors, 'mensagem') ?>
                 </div>
 

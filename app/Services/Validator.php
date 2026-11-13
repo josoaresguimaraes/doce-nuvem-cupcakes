@@ -8,6 +8,9 @@ namespace App\Services;
 final class Validator
 {
     public const MESSAGE_MAX = 50;
+    /** Caracteres aceitos na mensagem do topper (a mesma regra está no atributo pattern do formulário). */
+    public const MESSAGE_PATTERN = "/^[\\p{L}\\p{N} .,!?'\\-:()&]+$/u";
+    public const MESSAGE_RULE_TEXT = "letras, números, espaços e . , ! ? ' - : ( ) &";
     public const DESCRIPTION_MAX = 100;
 
     public static function email(string $email): bool
@@ -35,11 +38,17 @@ final class Validator
         return preg_match('/^\d{5}-?\d{3}$/', trim($cep)) === 1;
     }
 
-    /** US03 RN#1: mensagem opcional, até 50 caracteres alfanuméricos (letras acentuadas e espaços permitidos). */
+    /**
+     * US03 RN#1 (revisada após os testes com usuários, defeito D01): mensagem opcional, até 50 caracteres.
+     * Aceita letras (inclusive acentuadas), números, espaços e a pontuação comum em mensagens:
+     * . , ! ? ' - : ( ) &
+     * Continuam bloqueados os caracteres que poderiam ser usados para injetar HTML/script (< > " / \ etc.)
+     * e emojis, que a impressora do topper não reproduz.
+     */
     public static function cupcakeMessage(string $message): bool
     {
         return $message === ''
-            || (mb_strlen($message) <= self::MESSAGE_MAX && preg_match('/^[\p{L}\p{N} ]+$/u', $message) === 1);
+            || (mb_strlen($message) <= self::MESSAGE_MAX && preg_match(self::MESSAGE_PATTERN, $message) === 1);
     }
 
     public static function length(string $value, int $min, int $max): bool
