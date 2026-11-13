@@ -52,7 +52,7 @@ Cartão de teste aprovado: `4111 1111 1111 1111` · recusado: `4000 0000 0000 00
 
 ```bash
 composer install
-vendor/bin/phpunit --testdox     # 63 testes: unitários, integração (MySQL) e HTTP
+vendor/bin/phpunit --testdox     # 65 testes: unitários, integração (MySQL) e HTTP
 ```
 
 Detalhes, matriz de rastreabilidade e resultado em [docs/testes/](docs/testes/README.md).
@@ -68,8 +68,9 @@ Detalhes, matriz de rastreabilidade e resultado em [docs/testes/](docs/testes/RE
 | [Arquitetura](docs/arquitetura.md) | MVC, rotas, estrutura de pastas e segurança |
 | [Testes](docs/testes/README.md) | Estratégia (Modelo V), execução e rastreabilidade |
 | [Manual do usuário](docs/manual-do-usuario.md) | Passo a passo para cliente e gerente |
+| [Laudo de qualidade](docs/situacao-3/laudo-de-qualidade.md) | Testes com 5 usuários, defeitos, correções e evidências (versão 1.1) |
 | [Implantação](docs/implantacao.md) | Rodar localmente, GitHub e hospedagem |
-| [Situação 3](docs/situacao-3/) | Roteiro e formulário para testadores, modelo de laudo, roteiros dos vídeos e checklist |
+| [Situação 3](docs/situacao-3/) | Roteiro e formulário para testadores, laudo de qualidade com evidências, roteiros dos vídeos e checklist |
 
 ## Estrutura
 

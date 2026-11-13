@@ -55,6 +55,8 @@ Checkout Service (Tests\Integration\CheckoutService)
 
 Http (Tests\Integration\Http)
  ✔ Paginas publicas e rota inexistente
+ ✔ Pagina sobre nos mostra entrega e duvidas
+ ✔ Mensagem com pontuacao entra no carrinho
  ✔ Api da vitrine responde json
  ✔ Areas restritas exigem login
  ✔ Post sem token csrf e recusado
@@ -83,6 +85,6 @@ User And Address (Tests\Integration\UserAndAddress)
  ✔ Endereco pertence ao dono
  ✔ Formato do endereco
 
-Time: 00:02.369, Memory: 8.00 MB
+Time: 00:01.736, Memory: 8.00 MB
 
-OK (63 tests, 206 assertions)
+OK (65 tests, 220 assertions)

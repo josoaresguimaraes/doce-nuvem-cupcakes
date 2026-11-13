@@ -19,6 +19,9 @@ Cartões de teste (o pagamento é **simulado**, nada é cobrado):
 
 ## Para o cliente
 
+### Conhecer a loja
+O menu **Sobre nós** (também no rodapé) mostra quem somos, como funciona o pedido, as **regiões e taxas de entrega** e as **dúvidas frequentes**.
+
 ### 1. Escolher cupcakes
 1. Na **Vitrine**, role a página. Mais cupcakes carregam sozinhos, ou clique em **Carregar mais**.
 2. Para filtrar, marque categorias à esquerda (no celular, ficam acima da lista). Marcando duas ou mais, aparecem só os cupcakes que atendem a **todas**, por exemplo "Veganos" + "Sem glúten".
@@ -26,12 +29,12 @@ Cartões de teste (o pagamento é **simulado**, nada é cobrado):
 
 ### 2. Personalizar e adicionar ao carrinho
 1. Clique no cupcake.
-2. Escolha a **quantidade**, a **cobertura** (algumas têm valor adicional) e, se quiser, uma **mensagem** de até 50 letras, números e espaços.
+2. Escolha a **quantidade**, a **cobertura** (algumas têm valor adicional) e, se quiser, uma **mensagem** de até 50 caracteres: letras, números, espaços e . , ! ? ' - : ( ) &. Emojis não são aceitos.
 3. O **total do item** atualiza na hora.
 4. Clique em **Adicionar ao carrinho** ou em **Adicionar e continuar comprando**.
 
 ### 3. Carrinho
-- Altere as quantidades e clique em **Atualizar quantidades**. Quantidade 0 remove o item.
+- Altere as quantidades: o subtotal e o resumo **se atualizam sozinhos**. Quantidade 0 remove o item. *(Se o navegador estiver com JavaScript desligado, aparece o botão **Atualizar quantidades**.)*
 - **Remover** tira o item.
 - Pedidos abaixo de R$ 50,00 pagam taxa de R$ 5,00. O carrinho avisa quanto falta.
 

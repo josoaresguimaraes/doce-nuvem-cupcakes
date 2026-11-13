@@ -82,7 +82,7 @@ Toda mensagem diz **o que aconteceu** e **o que fazer**, aparece **junto ao camp
 
 | Situação | Mensagem |
 |---|---|
-| Mensagem do topper com símbolo ou mais de 50 caracteres | A mensagem aceita até 50 letras, números e espaços (sem símbolos). |
+| Mensagem do topper com símbolo não permitido ou mais de 50 caracteres | A mensagem aceita até 50 caracteres: letras, números, espaços e . , ! ? ' - : ( ) &. *(regra revisada na v1.1 — D01 do laudo)* |
 | Quantidade acima do estoque | Escolha entre 1 e N unidades. |
 | Cupcake esgotado | Este sabor está indisponível no momento. Volte em breve! |
 | E-mail já cadastrado | Este e-mail já está cadastrado. Faça login ou use outro e-mail. |

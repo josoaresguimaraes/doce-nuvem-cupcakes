@@ -50,7 +50,7 @@ python tests/e2e/fluxo_completo.py
 
 ## 3. Resultado da última execução
 
-**63 testes, 206 verificações (asserções), 0 falhas.** Saída completa em [resultado-phpunit.txt](resultado-phpunit.txt).
+**65 testes, 220 verificações (asserções), 0 falhas** (versão 1.1, após as correções do [laudo de qualidade](../situacao-3/laudo-de-qualidade.md); a versão 1.0 tinha 63 testes e 206 verificações). Saída completa em [resultado-phpunit.txt](resultado-phpunit.txt).
 
 O teste ponta a ponta percorreu os fluxos do cliente e do gerente **sem erros de JavaScript** e gerou as capturas em [`docs/ihc/telas/`](../ihc/telas/).
 
@@ -70,6 +70,9 @@ O teste ponta a ponta percorreu os fluxos do cliente e do gerente **sem erros de
 | US11 senha forte, hash, e-mail único | `ValidatorTest::testRegraDeSenha`, `UserAndAddressTest::testSenhaGuardadaComoHash`, `testEmailUnico` |
 | US15 CEP, endereço só do dono | `ValidatorTest::testCep`, `testEnderecoComErros`, `UserAndAddressTest::testEnderecoPertenceAoDono`, `CheckoutServiceTest::testNaoUsaEnderecoDeOutroCliente` |
 | Estoque na compra (transação) | `CheckoutServiceTest::testEstoqueInsuficienteNaoCriaPedido`, `OrderTest::testCancelamentoDevolveEstoque` |
+| D01 (laudo) mensagem com pontuação comum | `ValidatorTest::testMensagemDoCupcake`, `HttpTest::testMensagemComPontuacaoEntraNoCarrinho`, E2E |
+| D02 (laudo) carrinho atualiza sozinho | E2E (quantidade 7 → subtotal R$ 100,80 sem clicar em botão) |
+| S01 (laudo) página Sobre nós | `HttpTest::testPaginaSobreNosMostraEntregaEDuvidas`, E2E |
 | Segurança: CSRF, XSS, login genérico | `HttpTest::testPostSemTokenCsrfERecusado`, `testCadastroEscapaHtml`, `testLoginInvalidoMostraMensagemGenerica` |
 
 ## 5. Limitações conhecidas (para o laudo)

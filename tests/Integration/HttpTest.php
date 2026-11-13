@@ -102,6 +102,34 @@ final class HttpTest extends DatabaseTestCase
         self::assertSame(404, $this->request('GET', '/nao-existe')['status']);
     }
 
+    /** S01 do laudo: página institucional com dados vindos do banco. */
+    public function testPaginaSobreNosMostraEntregaEDuvidas(): void
+    {
+        $res = $this->request('GET', '/sobre');
+        self::assertSame(200, $res['status']);
+        self::assertStringContainsString('Sobre a Doce Nuvem', $res['body']);
+        self::assertStringContainsString('Dúvidas frequentes', $res['body']);
+        self::assertStringContainsString('Votorantim', $res['body'], 'zonas de entrega do banco');
+        self::assertStringContainsString('href="/sobre"', $this->request('GET', '/')['body'], 'link no menu');
+    }
+
+    /** D01 do laudo: mensagem com pontuação é aceita pelo servidor; HTML continua recusado. */
+    public function testMensagemComPontuacaoEntraNoCarrinho(): void
+    {
+        $page = $this->request('GET', '/produto/3');
+        $ok = $this->request('POST', '/carrinho/adicionar', [
+            '_token' => $this->token($page['body']), 'produto_id' => 3, 'quantidade' => 1, 'mensagem' => 'Parabéns, Ana!',
+        ]);
+        self::assertStringEndsWith('/carrinho', (string) $ok['location']);
+        self::assertStringContainsString('Parabéns, Ana!', $this->request('GET', '/carrinho')['body']);
+
+        $page = $this->request('GET', '/produto/3');
+        $bad = $this->request('POST', '/carrinho/adicionar', [
+            '_token' => $this->token($page['body']), 'produto_id' => 3, 'quantidade' => 1, 'mensagem' => '<b>oi</b>',
+        ]);
+        self::assertStringEndsWith('/produto/3', (string) $bad['location']);
+    }
+
     public function testApiDaVitrineRespondeJson(): void
     {
         $r = $this->request('GET', '/api/produtos?pagina=2');

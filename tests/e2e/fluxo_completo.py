@@ -65,18 +65,33 @@ def cliente(browser):
     page.goto(f"{BASE}/produto/3")
     page.fill("#mensagem", "Parabéns!!! <3")
     page.click("button:has-text('Adicionar ao carrinho')")
-    expect(page.locator(".field-error")).to_contain_text("50 letras")
+    expect(page.locator(".field-error")).to_contain_text("50 caracteres")
     shot(page, "03-produto-erro-mensagem")
 
-    # US03 — personalização válida
+    # US03 — personalização válida (D01: pontuação comum como "!" e "," é aceita)
     page.fill("#quantidade", "6")
     page.check("label:has-text('Cream cheese') input")
-    page.fill("#mensagem", "Feliz aniversário Ana")
+    page.fill("#mensagem", "Feliz aniversário, Ana!")
     expect(page.locator("#line-total")).to_have_text(re.compile(r"86,40"))
     shot(page, "04-produto-personalizacao")
     page.click("button:has-text('Adicionar ao carrinho')")
     expect(page.locator(".flash-success")).to_contain_text("adicionado")
+    expect(page.locator(".cart-product")).to_contain_text("Feliz aniversário, Ana!")
     shot(page, "05-carrinho")
+
+    # D02 — quantidades do carrinho atualizam sozinhas (sem clicar em botão)
+    expect(page.locator("[data-cart-update]")).to_be_hidden()
+    page.fill(".qty-input >> nth=0", "7")
+    expect(page.locator("td[data-label='Subtotal'] >> nth=0")).to_have_text(re.compile(r"100,80"))
+    expect(page.locator(".nav-cart .badge")).to_have_text("7")
+    page.fill(".qty-input >> nth=0", "6")
+    expect(page.locator("td[data-label='Subtotal'] >> nth=0")).to_have_text(re.compile(r"86,40"))
+
+    # S01 — página Sobre nós com áreas de entrega e dúvidas frequentes
+    page.click(".main-nav >> text=Sobre nós")
+    expect(page.locator("h1")).to_have_text("Sobre a Doce Nuvem")
+    expect(page.locator("#onde-entregamos ~ table, .table")).to_contain_text("Votorantim")
+    page.goto(f"{BASE}/carrinho")
 
     # Checkout exige login → volta ao checkout depois de entrar
     page.click("a:has-text('Finalizar pedido')")

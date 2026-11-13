@@ -140,7 +140,7 @@ Itens de cada pedido, com a personalização escolhida. *(Histórias: US03)*
 | `nome_produto` | varchar(80) | não |  |  | Nome copiado no momento da compra |
 | `cobertura_id` | int(10) unsigned | sim | FK → coberturas.id |  | Cobertura escolhida (opcional) |
 | `nome_cobertura` | varchar(50) | sim |  |  | Nome da cobertura copiado |
-| `mensagem` | varchar(50) | sim |  |  | Mensagem do topper (até 50 caracteres alfanuméricos, RN#1 US03) |
+| `mensagem` | varchar(50) | sim |  |  | Mensagem do topper (até 50 caracteres: letras, números, espaços e pontuação comum; RN#1 US03 revisada na v1.1) |
 | `quantidade` | int(10) unsigned | não |  |  | Quantidade (> 0) |
 | `preco_unitario` | decimal(10,2) | não |  |  | Preço do cupcake + adicional da cobertura |
 | `subtotal` | decimal(10,2) | não |  |  | quantidade × preço unitário |

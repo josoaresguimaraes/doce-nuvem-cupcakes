@@ -29,7 +29,7 @@ O PIT I definiu o produto (aplicativo de pedidos de cupcakes) em 15 histórias d
 | ID | História | Prior. PIT I | Prior. revisada | Status no PIT II |
 |---|---|---|---|---|
 | US01 | Visualizar vitrine | A | A | ✅ Implementada (14 cupcakes, indisponíveis sinalizados, paginação) |
-| US03 | Personalizar cupcakes no carrinho | A | A | ✅ Implementada (quantidade, cobertura, mensagem até 50 caracteres) |
+| US03 | Personalizar cupcakes no carrinho | A | A | ✅ Implementada (quantidade, cobertura, mensagem até 50 caracteres; na v1.1 a mensagem passou a aceitar pontuação comum — D01 do laudo) |
 | US04 | Calcular custo total | C | **A** | ✅ Implementada (itens + entrega + taxa de mínimo + urgência) |
 | US05 | Métodos de pagamento | A | A | ✅ Implementada **(simulada)** |
 | US06 | Data e horário de entrega | A | A | ✅ Implementada (expediente, antecedência, taxa de urgência) |
@@ -55,7 +55,7 @@ O PIT I definiu o produto (aplicativo de pedidos de cupcakes) em 15 histórias d
 | Rastreamento | < 5 s | A página consulta o status a cada 5 s. |
 | Segurança do pagamento | TLS e criptografia | O site deve ser publicado com HTTPS. O número do cartão **não é armazenado**, só os 4 últimos dígitos. |
 | Usabilidade/acessibilidade | — (novo) | Contraste adequado, foco visível, rótulos em todos os campos, mensagens de erro junto ao campo e alvos de toque ≥ 44 px. |
-| Manutenibilidade | — (novo) | Padrão MVC, regras de negócio em serviços testáveis e 63 testes automatizados. |
+| Manutenibilidade | — (novo) | Padrão MVC, regras de negócio em serviços testáveis e 65 testes automatizados (63 na v1.0). |
 
 ## 5. Artefatos produzidos nesta revisão
 
