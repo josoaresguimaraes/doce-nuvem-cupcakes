@@ -29,6 +29,7 @@ $current = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
         <button class="menu-toggle" aria-expanded="false" aria-controls="menu-principal">Menu</button>
         <nav id="menu-principal" class="main-nav" aria-label="Principal">
             <a href="<?= url('/') ?>" <?= $current === url('/') ? 'aria-current="page"' : '' ?>>Vitrine</a>
+            <a href="<?= url('sobre') ?>" <?= $current === url('sobre') ? 'aria-current="page"' : '' ?>>Sobre nós</a>
             <?php if ($user): ?>
                 <a href="<?= url('pedidos') ?>">Meus pedidos</a>
                 <a href="<?= url('enderecos') ?>">Endereços</a>
@@ -59,6 +60,7 @@ $current = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH);
 
 <footer class="site-footer">
     <div class="container">
+        <p><a href="<?= url('sobre') ?>">Sobre nós e dúvidas frequentes</a></p>
         <p>Doce Nuvem Cupcakes · Projeto acadêmico (PIT II – Engenharia de Software). Pagamentos são simulados.</p>
     </div>
 </footer>

@@ -8,7 +8,9 @@ use App\Core\Controller;
 use App\Core\HttpException;
 use App\Models\Category;
 use App\Models\Covering;
+use App\Models\DeliveryZone;
 use App\Models\Product;
+use App\Models\Setting;
 
 /** Vitrine virtual (US01) com filtros por categoria (US02). */
 final class ShopController extends Controller
@@ -59,6 +61,20 @@ final class ShopController extends Controller
             'title' => $product['nome'],
             'product' => $product,
             'coverings' => (new Covering())->active(),
+        ]);
+    }
+
+    /**
+     * Página "Sobre nós" (sugestão S01 do laudo de qualidade): apresenta a confeitaria e as regras de
+     * entrega e pagamento. Horários, taxas e áreas vêm do banco, então mudam junto com as configurações do gerente.
+     */
+    public function about(): void
+    {
+        $this->view('institucional/sobre', [
+            'title' => 'Sobre nós',
+            'settings' => (new Setting())->values(),
+            'zones' => (new DeliveryZone())->all(),
+            'categories' => (new Category())->all(),
         ]);
     }
 

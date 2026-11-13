@@ -9,6 +9,9 @@ $router->get('/', 'ShopController@index');
 $router->get('/api/produtos', 'ShopController@products');
 $router->get('/produto/{id}', 'ShopController@show');
 
+// Institucional: quem somos, entrega e dúvidas frequentes (sugestão S01 do laudo)
+$router->get('/sobre', 'ShopController@about');
+
 // Carrinho (US03, US04)
 $router->get('/carrinho', 'CartController@index');
 $router->post('/carrinho/adicionar', 'CartController@add', ['csrf']);
