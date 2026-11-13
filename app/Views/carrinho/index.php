@@ -1,4 +1,5 @@
 <h1>Seu carrinho</h1>
+<p id="cart-status" class="sr-only" aria-live="polite"></p>
 
 <?php if ($lines === []): ?>
     <div class="empty card">
@@ -43,7 +44,9 @@
                 </tbody>
             </table>
             <div class="actions">
-                <button type="submit" class="btn btn-secondary">Atualizar quantidades</button>
+                <?php /* Sem JavaScript o botão continua funcionando; com JavaScript a atualização é automática (D02). */ ?>
+                <button type="submit" class="btn btn-secondary" data-cart-update>Atualizar quantidades</button>
+                <p class="hint" data-cart-auto hidden>Os valores são atualizados automaticamente ao mudar a quantidade.</p>
                 <a href="<?= url('/') ?>" class="link-button">Continuar comprando</a>
             </div>
         </form>

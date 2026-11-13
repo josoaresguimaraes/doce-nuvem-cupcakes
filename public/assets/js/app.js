@@ -236,6 +236,71 @@
         refreshQuote();
     }
 
+    /* ---------- Carrinho: quantidades atualizadas automaticamente (defeito de usabilidade D02 do laudo) ----------
+       Ao mudar a quantidade, o formulário é enviado em segundo plano e a tabela e o resumo são
+       redesenhados com os valores calculados pelo servidor (a regra de preço continua só no back-end).
+       Quantidade 0 remove o item. Sem JavaScript, o botão "Atualizar quantidades" continua funcionando. */
+    const pageMain = $('#conteudo');
+    if (pageMain && $('.cart-items', pageMain)) {
+        let timer = null;
+        let pending = null;
+
+        const enhance = () => {
+            $$('[data-cart-update]', pageMain).forEach((b) => { b.hidden = true; });
+            $$('[data-cart-auto]', pageMain).forEach((p) => { p.hidden = false; });
+        };
+
+        async function refresh(form, focusId) {
+            if (pending) pending.abort();
+            pending = new AbortController();
+            const layout = $('.cart-layout', pageMain);
+            layout.classList.add('is-updating');
+            let doc;
+            try {
+                const res = await fetch(form.action, {
+                    method: 'POST', body: new FormData(form), credentials: 'same-origin', signal: pending.signal,
+                });
+                doc = new DOMParser().parseFromString(await res.text(), 'text/html');
+            } catch (err) {
+                if (err.name !== 'AbortError') form.submit(); // falhou a rede: cai no envio tradicional
+                return;
+            }
+            const fresh = doc.getElementById('conteudo');
+            const freshLayout = $('.cart-layout', fresh);
+            if (freshLayout) {
+                $('.cart-layout', pageMain).replaceWith(freshLayout);
+                // Mostra só avisos de erro (ex.: quantidade ajustada ao estoque); o "Carrinho atualizado" vai para o leitor de tela
+                $$('.flash-stack', pageMain).forEach((f) => f.remove());
+                const errors = $$('.flash-error', fresh);
+                if (errors.length) {
+                    const stack = document.createElement('div');
+                    stack.className = 'flash-stack';
+                    errors.forEach((e) => stack.appendChild(e));
+                    pageMain.prepend(stack);
+                }
+            } else {
+                pageMain.innerHTML = fresh.innerHTML; // carrinho ficou vazio
+            }
+            const badge = $('.nav-cart .badge');
+            const freshBadge = $('.nav-cart .badge', doc);
+            if (badge && freshBadge) badge.replaceWith(freshBadge);
+            const status = $('#cart-status', pageMain);
+            if (status) status.textContent = 'Carrinho atualizado.';
+            enhance();
+            const again = focusId && document.getElementById(focusId);
+            if (again) again.focus();
+        }
+
+        pageMain.addEventListener('input', (e) => {
+            const input = e.target;
+            if (!input.matches('.qty-input')) return;
+            clearTimeout(timer);
+            if (input.value === '' || Number(input.value) < 0) return; // espera o usuário terminar de digitar
+            timer = setTimeout(() => refresh(input.form, input.id), 500);
+        });
+        enhance();
+    }
+
     /* ---------- Rastreamento do pedido: consulta a cada 5 s (US07 RNF#1) ---------- */
     const tracker = $('#order-tracker');
     if (tracker) {
